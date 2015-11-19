@@ -301,7 +301,7 @@ public final class PluginOption {
      *
     
      * @return The option object required by commons cli */
-    Option toOption() {
+   public Option toOption() {
         DefaultOptionBuilder oBuilder = new DefaultOptionBuilder();
 
         oBuilder.withShortName(option).withDescription(description).withRequired(required);
