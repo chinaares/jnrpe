@@ -46,7 +46,7 @@ import java.util.Collections;
  * @author Massimiliano Ziccardi
  * @version $Revision: 1.0 $
  */
-public abstract class PluginBase implements IPluginInterfaceEx {
+public abstract class PluginBase implements IPluginInterface {
 
     /**
      * Field context.
