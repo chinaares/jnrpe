@@ -29,7 +29,7 @@ import org.apache.commons.cli2.CommandLine;
  * 
  * @version $Revision: 1.0 $
  */
-class PluginCommandLine implements ICommandLine {
+public class PluginCommandLine implements ICommandLine {
     /**
      * The Apache Commons Cli {@link CommandLine} object.
      */
@@ -41,7 +41,7 @@ class PluginCommandLine implements ICommandLine {
      * @param cl
      *            The command line to be incapsulated
      */
-    PluginCommandLine(final CommandLine cl) {
+    public PluginCommandLine(final CommandLine cl) {
         commandLine = cl;
     }
 
