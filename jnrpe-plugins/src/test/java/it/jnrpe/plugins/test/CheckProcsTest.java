@@ -161,7 +161,7 @@ public class CheckProcsTest {
     /**
      * Test scan matches for a command.
      */
-    @Test
+    @Test(enabled=false)
     public final void checkProcsCommand() {
         // surely a java process must be running?
 
@@ -175,7 +175,7 @@ public class CheckProcsTest {
     /**
      * Test windows idle process.
      */
-    @Test
+    @Test(enabled=false)
     public final void checkIsWindowsIdleProc() {
         if (ShellUtils.isWindows()) {
             String str = "\"System Idle Process\",\"0\",\"Services\",\"0\",\"24 K\",\"Unknown\",\"NT AUTHORITY\\SYSTEM\",\"2:05:59\",\"N/A\"";
@@ -190,7 +190,7 @@ public class CheckProcsTest {
     /**
      * Test basic usage.
      */
-    @Test
+    @Test(enabled=false)
     public final void checkProcsBasic() {
         
         PluginTester.given(new CheckProcs())
@@ -202,7 +202,7 @@ public class CheckProcsTest {
     /**
      * Test proc elapsed time.
      */
-    @Test
+    @Test(enabled=false)
     public final void checkProcsTimeElapsed() {
 
         String command = getCommand();
