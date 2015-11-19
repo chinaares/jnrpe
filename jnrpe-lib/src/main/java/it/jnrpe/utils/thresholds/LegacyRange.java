@@ -27,6 +27,37 @@ import java.math.BigDecimal;
  * Utility class for evaluating thresholds. This class represent a Threshold
  * specified using the old Nagios syntax.
  * 
+ * This is the generalised format for ranges:
+ * 
+ * [@]start:end
+ * 
+ * Notes:
+ * 
+ * start ≤ end
+ * 
+ * start and ":" is not required if start=0
+ * 
+ * if range is of format "start:" and end is not specified, assume end is
+ * infinity
+ * 
+ * to specify negative infinity, use "~"
+ * 
+ * alert is raised if metric is outside start and end range(inclusive of
+ * endpoints)
+ * 
+ * if range starts with "@", then alert if inside this range(inclusive of
+ * endpoints)
+ * 
+ * Note: Not all plugins are coded to expect ranges in this format yet. There
+ * will be some work in providing multiple metrics. Table 3. Example ranges
+ * 
+ * Range definition
+ * Generate an alert if x... 10 < 0 or > 10, (outside the range of {0 .. 10})
+ * 10: < 10, (outside {10 .. ∞}) ~:10 > 10, (outside the range of {-∞ .. 10})
+ * 10:20 < 10 or > 20, (outside the range of {10 .. 20})
+ * 
+ * @10:20 ≥ 10 and ≤ 20, (inside the range of {10 .. 20})
+ * 
  * @author Massimiliano Ziccardi
  * @version $Revision: 1.0 $
  */
