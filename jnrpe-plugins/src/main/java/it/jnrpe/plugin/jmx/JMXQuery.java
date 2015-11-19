@@ -173,8 +173,14 @@ public abstract class JMXQuery extends PluginBase {
             out.print(' ');
             if (attribute_key != null)
                 out.print(attribute + '.' + attribute_key + " is " + checkData);
+	            if ( checkData instanceof Number) {
+	                out.print (" | "+ attribute + '.' + attribute_key +"="+checkData);
+	            }
             else {
                 out.print(attribute + " is " + checkData);
+                if ( checkData instanceof Number) {
+                    out.print (" | "+ attribute +"="+checkData);
+                }
                 shown = true;
             }
 
@@ -287,7 +293,21 @@ public abstract class JMXQuery extends PluginBase {
         this.infoData = infoData;
     }
 
-    private void report(final CompositeDataSupport data, final PrintStream out) {
+    /**
+	 * @return the checkData
+	 */
+	public Object getCheckData() {
+		return checkData;
+	}
+
+	/**
+	 * @param checkData the checkData to set
+	 */
+	public void setCheckData(Object checkData) {
+		this.checkData = checkData;
+	}
+
+	private void report(final CompositeDataSupport data, final PrintStream out) {
         CompositeType type = data.getCompositeType();
         out.print(',');
         for (Iterator it = type.keySet().iterator(); it.hasNext();) {
@@ -332,7 +352,7 @@ public abstract class JMXQuery extends PluginBase {
             Object info_attr = info_attribute.equals(attribute) ? attr : connection.getAttribute(new ObjectName(object), info_attribute);
             if (info_key != null && (info_attr instanceof CompositeDataSupport) && verbatim < 4) {
                 CompositeDataSupport cds = (CompositeDataSupport) attr;
-                infoData = cds.get(info_key);
+                infoData = cds.get(info_key);// todo: Possible bug? value <=> infoValue
             } else {
                 infoData = info_attr;
             }
